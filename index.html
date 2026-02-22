@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flight Ticket Payment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      width: 95%;
+      max-width: 600px;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin-top: 0;
+    }
+    .alert {
+      background: #fef3c7;
+      border: 1px solid #fcd34d;
+      color: #92400e;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    .wallet-box {
+      background: #f3f4f6;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 14px;
+      word-break: break-all;
+      margin-bottom: 20px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+    .primary {
+      background: #111827;
+      color: white;
+    }
+    .secondary {
+      background: white;
+      border: 1px solid #d1d5db;
+    }
+    .danger-title {
+      color: #b91c1c;
+    }
+    ol {
+      padding-left: 18px;
+      font-size: 14px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- PAYMENT PAGE -->
+  <div id="paymentPage" class="card">
+    <h1>Flight Ticket Payment</h1>
+
+    <div class="alert">
+      ⚠️ Notice: Please resolve the issue with your previous USDT transaction before making a new payment. Click "Previous Transaction Notice" below for instructions.
+    </div>
+
+    <p>Please proceed with your flight ticket payment using the provided USDT wallet address.</p>
+
+    <div class="wallet-box">
+      <strong>USDT (TRC20) Wallet Address:</strong><br>
+      TXXXXXXXXXXXXXXX
+    </div>
+
+    <button class="primary" onclick="openTrustWallet()">Open Trust Wallet</button>
+    <button class="secondary" onclick="showRecovery()">Previous Transaction Notice</button>
+  </div>
+
+  <!-- RECOVERY PAGE -->
+  <div id="recoveryPage" class="card hidden">
+    <h1 class="danger-title">Important: USDT Transaction Notice</h1>
+
+    <p>
+      A previous USDT transfer was mistakenly sent to your TRX wallet address.
+      The funds are not lost. They are currently hidden inside your Trust Wallet
+      under the USDT (TRC20) token.
+    </p>
+
+    <h3>Follow these steps:</h3>
+    <ol>
+      <li>Open your Trust Wallet app.</li>
+      <li>Tap the filter icon (top right).</li>
+      <li>Search for "USDT".</li>
+      <li>Enable USDT (TRC20) on the TRON network.</li>
+      <li>Return to your wallet home screen.</li>
+      <li>You should now see the USDT balance.</li>
+      <li>Send the USDT back to our official wallet address below.</li>
+    </ol>
+
+    <div class="wallet-box">
+      <strong>Return USDT To:</strong><br>
+      TXXXXXXXXXXXXXXX
+    </div>
+
+    <button class="primary" onclick="openTrustWallet()">Download / Open Trust Wallet</button>
+    <button class="secondary" onclick="showPayment()">Back to Payment Page</button>
+  </div>
+
+</div>
+
+<script>
+  function showRecovery() {
+    document.getElementById("paymentPage").classList.add("hidden");
+    document.getElementById("recoveryPage").classList.remove("hidden");
+  }
+
+  function showPayment() {
+    document.getElementById("recoveryPage").classList.add("hidden");
+    document.getElementById("paymentPage").classList.remove("hidden");
+  }
+
+  function openTrustWallet() {
+    window.open("https://trustwallet.com/", "_blank");
+  }
+</script>
+
+</body>
+</html>
